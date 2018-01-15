@@ -9,7 +9,7 @@ import tp1.model.Environnement;
 import tp1.sma.SMA;
 import view.Displayer;
 
-public class MainGraphicalUI {
+public class MainGUI {
 
 	public static void main(String[] args) throws InterruptedException {
 		Environnement env = new Environnement(ConstantParams.getGridSizeX(), ConstantParams.getGridSizeY(), ConstantParams.getTorus());
