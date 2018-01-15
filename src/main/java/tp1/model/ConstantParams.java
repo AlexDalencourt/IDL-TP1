@@ -48,14 +48,18 @@ public class ConstantParams {
 	}
 
 	public static int getCanvasSizeX() {
-		return 100;
+		return 500;
 	}
 
 	public static int getCanvasSizeY() {
-		return 100;
+		return 500;
 	}
 
 	public static int getBoxSize() {
-		return 10;
+		return 50;
+	}
+
+	public static long getDelay() {
+		return 1000;
 	}
 }

@@ -35,6 +35,10 @@ public class Environnement {
 		environnement[agent.getPosX()][agent.getPosY()] = agent;
 	}
 	
+	public Agent[][] getEnvironnement() {
+		return environnement;
+	}
+
 	@Override
 	public String toString() {
 		String output = "";
