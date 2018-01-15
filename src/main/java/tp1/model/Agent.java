@@ -1,4 +1,4 @@
-package tp1;
+package tp1.model;
 
 public class Agent {
 	private int id;

@@ -1,6 +1,9 @@
-package tp1;
+package tp1.model;
 
 import java.util.Random;
+
+import tp1.sma.SMA;
+import tp1.sma.SMASequential;
 
 public class ConstantParams {
 	
@@ -41,6 +44,18 @@ public class ConstantParams {
 	}
 
 	public static int getNumberOfTicks() {
+		return 10;
+	}
+
+	public static int getCanvasSizeX() {
+		return 100;
+	}
+
+	public static int getCanvasSizeY() {
+		return 100;
+	}
+
+	public static int getBoxSize() {
 		return 10;
 	}
 }

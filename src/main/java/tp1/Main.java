@@ -1,5 +1,9 @@
 package tp1;
 
+import tp1.model.ConstantParams;
+import tp1.model.Environnement;
+import tp1.sma.SMA;
+
 public class Main {
 
 	public static void main(String[] args) {

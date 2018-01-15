@@ -1,4 +1,6 @@
-package tp1;
+package tp1.sma;
+
+import tp1.model.Agent;
 
 public class SMASequential extends SMA {
 

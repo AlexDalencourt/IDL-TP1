@@ -1,7 +1,11 @@
-package tp1;
+package tp1.sma;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tp1.model.Agent;
+import tp1.model.ConstantParams;
+import tp1.model.Environnement;
 
 public abstract class SMA {
 	protected final List<Agent> agentList = new ArrayList<>();

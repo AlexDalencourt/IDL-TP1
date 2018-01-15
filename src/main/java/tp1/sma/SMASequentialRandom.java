@@ -1,7 +1,10 @@
-package tp1;
+package tp1.sma;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tp1.model.Agent;
+import tp1.model.ConstantParams;
 
 public class SMASequentialRandom extends SMA{
 	

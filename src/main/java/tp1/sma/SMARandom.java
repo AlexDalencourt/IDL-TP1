@@ -1,4 +1,6 @@
-package tp1;
+package tp1.sma;
+
+import tp1.model.ConstantParams;
 
 public class SMARandom extends SMA {
 
