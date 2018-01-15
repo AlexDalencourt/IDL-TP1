@@ -10,6 +10,10 @@ public class Environnement {
 		this.torus = torus;
 	}
 
+	public void putAgent(Agent agent) {
+		environnement[agent.getPosX()][agent.getPosY()] = agent;
+	}
+
 	public boolean isEmptyCellule(int x, int y) {
 		if((x < 0 || y < 0) && !torus) {
 			return false;

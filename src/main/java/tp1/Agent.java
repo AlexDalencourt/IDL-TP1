@@ -3,7 +3,7 @@ package tp1;
 public class Agent {
 	private int id;
 
-	private Environnement environnement;
+	private Environnement env;
 
 	private int posX;
 
@@ -13,10 +13,12 @@ public class Agent {
 
 	private int pasY;
 
-	public Agent(int id, int posX, int posY) {
+	public Agent(int id, int posX, int posY, Environnement env) {
 		this.id = id;
 		this.posX = posX;
 		this.posY = posY;
+		this.env = env;
+		this.env.putAgent(this);
 	}
 
 	public int getId() {
@@ -35,11 +37,11 @@ public class Agent {
 			}
 			testValues[pasX][pasY] = true;
 			nbTestScale++;
-			if(environnement.isEmptyCellule(getNewPosX(), getNewPosY())) {
+			if(env.isEmptyCellule(getNewPosX(), getNewPosY())) {
 				break;
 			}
-			pasX = pasX * -1;
-			pasY = pasY * -1;
+			pasX = (pasX - 1) * -1 + 1;
+			pasY = (pasY - 1) * -1 + 1;
 			if(testValues[pasX][pasY]) {
 				pasX = 1;
 				pasY = 1;
@@ -48,7 +50,7 @@ public class Agent {
 				nbTestScale++;
 			}
 		} while (nbTestScale < ConstantParams.numberOfNeighbours);
-		environnement.applyTransition(this);
+		env.applyTransition(this);
 	}
 
 	public int getPosX() {

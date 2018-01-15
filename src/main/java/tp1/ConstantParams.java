@@ -8,6 +8,8 @@ public class ConstantParams {
 	
 	private static Random random = null;
 	
+	private static SMA sma = null;
+	
 	public static int getNumberOfParticles() {
 		return 10;
 	}
@@ -24,6 +26,21 @@ public class ConstantParams {
 	}
 
 	public static int getGridSizeY() {
+		return 10;
+	}
+
+	public static boolean getTorus() {
+		return false;
+	}
+
+	public static SMA getSMA() {
+		if(sma == null) {
+			sma = new SMASequential();
+		}
+		return sma;
+	}
+
+	public static int getNumberOfTicks() {
 		return 10;
 	}
 }
