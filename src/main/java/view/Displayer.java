@@ -35,11 +35,13 @@ public class Displayer extends JPanel implements Observer {
 		super.paint(g);
 		this.setBackground(Color.WHITE);
 		g.setColor(Color.BLACK);
-		for(int i = ConstantParams.getBoxSize() + 1; i < ConstantParams.getCanvasSizeX(); i += ConstantParams.getBoxSize() + 1) {
-			g.drawLine(i, 0, i, frameSizeY);
-		}
-		for(int i = ConstantParams.getBoxSize() + 1; i < ConstantParams.getCanvasSizeY(); i += ConstantParams.getBoxSize() + 1) {
-			g.drawLine(0, i, frameSizeX, i);
+		if(ConstantParams.showGrid()) {
+			for(int i = ConstantParams.getBoxSize() + 1; i < ConstantParams.getCanvasSizeX(); i += ConstantParams.getBoxSize() + 1) {
+				g.drawLine(i, 0, i, frameSizeY);
+			}
+			for(int i = ConstantParams.getBoxSize() + 1; i < ConstantParams.getCanvasSizeY(); i += ConstantParams.getBoxSize() + 1) {
+				g.drawLine(0, i, frameSizeX, i);
+			}
 		}
 		for(int i = 0; i < env.getEnvironnement().length; i++) {
 			for(int j = 0; j < env.getEnvironnement()[i].length; j++) {
