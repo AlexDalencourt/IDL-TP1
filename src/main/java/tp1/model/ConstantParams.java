@@ -94,11 +94,11 @@ public class ConstantParams {
 	}
 
 	public static int getBoxSize() {
-		return Integer.getInteger(props.getProperty("box.size"));
+		return Integer.valueOf(props.getProperty("box.size"));
 	}
 
 	public static long getDelay() {
-		return Long.getLong(props.getProperty("delay"));
+		return Long.valueOf(props.getProperty("delay"));
 	}
 	
 	public static boolean showGrid() {
