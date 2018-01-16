@@ -22,7 +22,7 @@ public class Environnement extends Observable {
 	}
 
 	public boolean isEmptyCellule(int x, int y) {
-		if((x < 0 || y < 0) && !torus) {
+		if((x < 0 || y < 0 || x >= ConstantParams.getGridSizeX() || y >= ConstantParams.getGridSizeY()) && !torus) {
 			return false;
 		}
 		else if (torus) {
@@ -31,6 +31,12 @@ public class Environnement extends Observable {
 			}
 			if(y < 0) {
 				y = ConstantParams.getGridSizeY() - 1;
+			}
+			if(x >= ConstantParams.getGridSizeX()) {
+				x = 0;
+			}
+			if(y >= ConstantParams.getGridSizeY()) {
+				y = 0;
 			}
 		}
 		return null == environnement[x][y];
