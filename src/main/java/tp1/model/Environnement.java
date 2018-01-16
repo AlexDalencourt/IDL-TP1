@@ -1,13 +1,18 @@
 package tp1.model;
 
-public class Environnement {
+import java.util.Observable;
+
+public class Environnement extends Observable {
 	private Agent[][] environnement;
 	
 	private boolean torus;
 	
+	private int tick;
+	
 	public Environnement(int x, int y, boolean torus) {
 		this.environnement = new Agent[x][y];
 		this.torus = torus;
+		this.tick = 0;
 	}
 
 	public void putAgent(Agent agent) {
@@ -33,10 +38,17 @@ public class Environnement {
 		environnement[agent.getPosX()][agent.getPosY()] = null;
 		agent.update();
 		environnement[agent.getPosX()][agent.getPosY()] = agent;
+		tick++;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public Agent[][] getEnvironnement() {
 		return environnement;
+	}
+	
+	public int getTick() {
+		return tick;
 	}
 
 	@Override
@@ -57,4 +69,5 @@ public class Environnement {
 		}
 		return output;
 	}
+	
 }

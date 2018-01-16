@@ -2,13 +2,15 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JPanel;
 
 import tp1.model.ConstantParams;
 import tp1.model.Environnement;
 
-public class Displayer extends JPanel {
+public class Displayer extends JPanel implements Observer {
 
 	/**
 	 * 
@@ -23,6 +25,7 @@ public class Displayer extends JPanel {
 	
 	public Displayer(Environnement env, int frameSizeX, int frameSizeY) {
 		this.env = env;
+		this.env.addObserver(this);
 		this.frameSizeX = frameSizeX;
 		this.frameSizeY = frameSizeY;
 	}
@@ -51,5 +54,12 @@ public class Displayer extends JPanel {
 		int posX = (ConstantParams.getBoxSize() + 1) * x;
 		int posY = (ConstantParams.getBoxSize() + 1) * y;
 		g.fillOval(posX, posY, ConstantParams.getBoxSize() + 1, ConstantParams.getBoxSize() + 1);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(env.getTick() % ConstantParams.refresh() == 0) {
+			repaint();	
+		}
 	}
 }

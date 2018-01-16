@@ -1,5 +1,6 @@
 package tp1;
 
+import java.awt.Dimension;
 import java.math.BigDecimal;
 
 import javax.swing.JFrame;
@@ -21,13 +22,13 @@ public class MainGUI {
 		int sizeY = ConstantParams.getCanvasSizeY();
 		sizeX = sizeX + (new BigDecimal(sizeX).divide(new BigDecimal(ConstantParams.getBoxSize()), BigDecimal.ROUND_UP).intValue() - 1);
 		sizeY = sizeY + (new BigDecimal(sizeY).divide(new BigDecimal(ConstantParams.getBoxSize()), BigDecimal.ROUND_UP).intValue() - 1);
-		windows.setSize(sizeX,sizeY);
-		windows.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Displayer displayer = new Displayer(env,sizeX,sizeY);
+		displayer.setPreferredSize(new Dimension(sizeX, sizeY));
 		windows.setContentPane(displayer);
+		windows.pack();
+		windows.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		for(int i = 0; i < ConstantParams.getNumberOfTicks();i++) {
 			sma.run();
-			displayer.repaint();
 			Thread.sleep(ConstantParams.getDelay());
 		}
 	}
