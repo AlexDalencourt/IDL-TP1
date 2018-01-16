@@ -9,6 +9,7 @@ import tp1.model.ConstantParams;
 import tp1.model.Environnement;
 import tp1.sma.SMA;
 import view.Displayer;
+import view.MainFrame;
 
 public class MainGUI {
 
@@ -27,6 +28,7 @@ public class MainGUI {
 		windows.setContentPane(displayer);
 		windows.pack();
 		windows.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		new MainFrame(env);
 		for(int i = 0; i < ConstantParams.getNumberOfTicks();i++) {
 			sma.run();
 			Thread.sleep(ConstantParams.getDelay());
