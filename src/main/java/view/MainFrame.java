@@ -22,18 +22,16 @@ public class MainFrame extends JFrame {
 		init();
 		
 		setVisible(true);
-		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	private void init() {
 		int sizeX = ConstantParams.getCanvasSizeX();
 		int sizeY = ConstantParams.getCanvasSizeY();
-		displayer = new Displayer(env, sizeX+100, sizeY+100);
-		displayer.setPreferredSize(new Dimension(sizeX+100, sizeY+100));
-		JScrollPane panel = new JScrollPane(displayer);
-		panel.getViewport().setPreferredSize(new Dimension(sizeX,sizeY));
-		setContentPane(panel);
+		displayer = new Displayer(env);
+		JScrollPane scrollPanel = new JScrollPane(displayer);
+		setContentPane(scrollPanel);
+		this.setSize(new Dimension(sizeX,sizeY));
 	}
 	
 }
