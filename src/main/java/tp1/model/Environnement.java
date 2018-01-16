@@ -2,6 +2,8 @@ package tp1.model;
 
 import java.util.Observable;
 
+import tp1.Logger;
+
 public class Environnement extends Observable {
 	private Agent[][] environnement;
 	
@@ -35,12 +37,16 @@ public class Environnement extends Observable {
 	}
 	
 	public void applyTransition(Agent agent) {
+		Logger.log(String.format("Apply transition agent %s : [%s,%s] -> [%s,%s]", agent.getId(),agent.getPosX(),agent.getNewPosY(),agent.getNewPosX(),agent.getNewPosY()));
+		
 		environnement[agent.getPosX()][agent.getPosY()] = null;
 		agent.update();
 		environnement[agent.getPosX()][agent.getPosY()] = agent;
 		tick++;
 		setChanged();
 		notifyObservers();
+		
+		Logger.log(this);
 	}
 	
 	public Agent[][] getEnvironnement() {

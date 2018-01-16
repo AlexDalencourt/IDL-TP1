@@ -1,5 +1,7 @@
 package tp1.model;
 
+import tp1.Logger;
+
 public class Agent {
 	private int id;
 
@@ -40,6 +42,7 @@ public class Agent {
 			if(env.isEmptyCellule(getNewPosX(), getNewPosY())) {
 				break;
 			}
+			Logger.log(String.format("Agent %s collision detect or out of board on position : [%s,%s]", id, getNewPosX(), getNewPosY()));
 			pasX = (pasX - 1) * -1 + 1;
 			pasY = (pasY - 1) * -1 + 1;
 			if(testValues[pasX][pasY]) {
