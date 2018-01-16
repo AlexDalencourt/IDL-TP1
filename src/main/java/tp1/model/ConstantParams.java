@@ -25,7 +25,8 @@ public class ConstantParams {
 	static {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Path to properties file");
-		String path = scan.nextLine();
+//		String path = scan.nextLine();
+		String path = "src/main/resources/param.properties";
 		scan.close();
 		props = new Properties();
 		try {
@@ -102,15 +103,15 @@ public class ConstantParams {
 	}
 	
 	public static boolean showGrid() {
-		return Boolean.getBoolean(props.getProperty("grid"));
+		return Boolean.valueOf(props.getProperty("grid"));
 	}
 	
 	public static boolean showTrace() {
-		return Boolean.getBoolean(props.getProperty("trace"));
+		return Boolean.valueOf(props.getProperty("trace"));
 	}
 	
 	public static int refresh() {
-		return Integer.getInteger(props.getProperty("refresh"));
+		return Integer.valueOf(props.getProperty("refresh"));
 	}
 	
 	private enum SMATypes {
