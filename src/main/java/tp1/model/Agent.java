@@ -1,9 +1,5 @@
 package tp1.model;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
 import tp1.Logger;
 
 public class Agent {
@@ -49,6 +45,7 @@ public class Agent {
 			pasX *= -1;
 			pasY *= -1;
 			collision = true;
+			env.tickUpdate();
 		} else {
 			env.applyTransition(this);
 		}

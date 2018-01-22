@@ -67,8 +67,6 @@ public class Displayer extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if (env.getTick() % ConstantParams.refresh() == 0) {
-			repaint();
-		}
+		repaint();
 	}
 }

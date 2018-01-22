@@ -10,7 +10,7 @@ import tp1.model.Environnement;
 
 public abstract class SMA {
 	protected final List<Agent> agentList = new ArrayList<>();
-
+	
 	abstract public void run();
 
 	public void initAgent(Environnement env) {
@@ -31,4 +31,5 @@ public abstract class SMA {
 		}
 		Logger.log(agentList);
 	}
+
 }

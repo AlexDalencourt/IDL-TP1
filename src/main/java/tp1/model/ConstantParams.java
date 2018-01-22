@@ -7,6 +7,8 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.apache.commons.lang3.StringUtils;
+
 import tp1.sma.SMA;
 import tp1.sma.SMARandom;
 import tp1.sma.SMASequential;
@@ -95,7 +97,18 @@ public class ConstantParams {
 	}
 
 	public static int getBoxSize() {
-		return Integer.valueOf(props.getProperty("box.size"));
+		String value = props.getProperty("box.size", "auto");
+		int size;
+		if("auto".equals(value.trim().toLowerCase())) {
+			size = ConstantParams.getCanvasSizeX() < ConstantParams.getCanvasSizeY() ? 
+					ConstantParams.getCanvasSizeX() / ConstantParams.getGridSizeX() : 
+						ConstantParams.getCanvasSizeY() / ConstantParams.getGridSizeY();
+		} else if(StringUtils.isNumeric(value)) {
+			size = Integer.valueOf(props.getProperty("box.size"));
+		} else {
+			throw new RuntimeException("Box size value " + value + " is not a correct value (auto or a number)");
+		}
+		return size;
 	}
 
 	public static long getDelay() {

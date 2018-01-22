@@ -8,16 +8,25 @@ import view.MainFrame;
 public class MainGUI {
 
 	public static void main(String[] args) throws InterruptedException {
-		Environnement env = new Environnement(ConstantParams.getGridSizeX(), ConstantParams.getGridSizeY(), ConstantParams.getTorus());
+		Environnement env = new Environnement(ConstantParams.getGridSizeX(), ConstantParams.getGridSizeY(),
+				ConstantParams.getTorus());
 		SMA sma = ConstantParams.getSMA();
 		sma.initAgent(env);
 
 		new MainFrame(env);
-		for(int i = 0; i < ConstantParams.getNumberOfTicks();i++) {
-			for(int j = 0; j < ConstantParams.getNumberOfParticles(); j++) {
-				sma.run();
+		Thread.sleep(ConstantParams.getDelay());
+		while (true) {
+			if (ConstantParams.getNumberOfTicks() != 0 && env.getTick() < ConstantParams.getNumberOfTicks()) {
+				break;
 			}
-			Thread.sleep(ConstantParams.getDelay());
+			executeOneTick(sma);
 		}
+	}
+
+	private static void executeOneTick(SMA sma) throws InterruptedException {
+		for (int j = 0; j < ConstantParams.getNumberOfParticles(); j++) {
+			sma.run();
+		}
+		Thread.sleep(ConstantParams.getDelay());
 	}
 }

@@ -11,10 +11,13 @@ public class Environnement extends Observable {
 	
 	private int tick;
 	
+	private int localTick;
+	
 	public Environnement(int x, int y, boolean torus) {
 		this.environnement = new Agent[x][y];
 		this.torus = torus;
 		this.tick = 0;
+		this.localTick = 0;
 	}
 
 	public void putAgent(Agent agent) {
@@ -49,11 +52,19 @@ public class Environnement extends Observable {
 		environnement[agent.getPosX()][agent.getPosY()] = null;
 		agent.update();
 		environnement[agent.getPosX()][agent.getPosY()] = agent;
-		tick++;
-		setChanged();
-		notifyObservers();
-		
 		Logger.log(this);
+
+		tickUpdate();
+	}
+	
+	public void tickUpdate() {
+		this.localTick++;
+		if(localTick >= ConstantParams.getNumberOfParticles() - 1) {
+			this.localTick = 0;
+			this.tick++;
+			setChanged();
+			notifyObservers();
+		}
 	}
 	
 	public Agent[][] getEnvironnement() {
