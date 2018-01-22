@@ -48,15 +48,20 @@ public class Displayer extends JPanel implements Observer {
 		for (int i = 0; i < env.getEnvironnement().length; i++) {
 			for (int j = 0; j < env.getEnvironnement()[i].length; j++) {
 				if (env.getEnvironnement()[i][j] != null) {
-					drawBall(g, i, j);
+					drawBall(g, i, j, env.getEnvironnement()[i][j].getCollision());
 				}
 			}
 		}
 	}
 
-	private void drawBall(Graphics g, int x, int y) {
+	private void drawBall(Graphics g, int x, int y, boolean collision) {
 		int posX = (ConstantParams.getBoxSize() + 1) * x;
 		int posY = (ConstantParams.getBoxSize() + 1) * y;
+		if(collision) {
+			g.setColor(Color.RED);
+		} else {
+			g.setColor(Color.BLACK);
+		}
 		g.fillOval(posX, posY, ConstantParams.getBoxSize() + 1, ConstantParams.getBoxSize() + 1);
 	}
 

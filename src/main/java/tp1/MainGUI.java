@@ -14,7 +14,9 @@ public class MainGUI {
 
 		new MainFrame(env);
 		for(int i = 0; i < ConstantParams.getNumberOfTicks();i++) {
-			sma.run();
+			for(int j = 0; j < ConstantParams.getNumberOfParticles(); j++) {
+				sma.run();
+			}
 			Thread.sleep(ConstantParams.getDelay());
 		}
 	}

@@ -26,8 +26,11 @@ public class MainFrame extends JFrame {
 	}
 
 	private void init() {
-		int sizeX = ConstantParams.getCanvasSizeX();
-		int sizeY = ConstantParams.getCanvasSizeY();
+		// 15 est la large ou hauteur en fonction de l'axe de l'ascenseur
+		int sizeX = ConstantParams.getCanvasSizeX() + (int)(ConstantParams
+				.getCanvasSizeX() / ConstantParams.getBoxSize()) + 15;
+		int sizeY = ConstantParams.getCanvasSizeY() + (int)(ConstantParams
+				.getCanvasSizeY() / ConstantParams.getBoxSize()) + 15;
 		displayer = new Displayer(env);
 		JScrollPane scrollPanel = new JScrollPane(displayer);
 		setContentPane(scrollPanel);
