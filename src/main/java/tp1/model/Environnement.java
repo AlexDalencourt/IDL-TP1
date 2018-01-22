@@ -22,10 +22,7 @@ public class Environnement extends Observable {
 	}
 
 	public boolean isEmptyCellule(int x, int y) {
-		if((x < 0 || y < 0 || x >= ConstantParams.getGridSizeX() || y >= ConstantParams.getGridSizeY()) && !torus) {
-			return false;
-		}
-		else if (torus) {
+		if (torus) {
 			if(x < 0) {
 				x = ConstantParams.getGridSizeX() - 1;
 			}
@@ -40,6 +37,10 @@ public class Environnement extends Observable {
 			}
 		}
 		return null == environnement[x][y];
+	}
+
+	public boolean checkOutOfBorders(int x, int y) {
+		return (x < 0 || y < 0 || x >= ConstantParams.getGridSizeX() || y >= ConstantParams.getGridSizeY()) && !torus;
 	}
 	
 	public void applyTransition(Agent agent) {
@@ -61,6 +62,10 @@ public class Environnement extends Observable {
 	
 	public int getTick() {
 		return tick;
+	}
+	
+	public boolean getTorus() {
+		return torus;
 	}
 
 	@Override
