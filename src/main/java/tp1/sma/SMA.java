@@ -1,15 +1,13 @@
 package tp1.sma;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import tp1.Logger;
 import tp1.model.Agent;
 import tp1.model.ConstantParams;
 import tp1.model.Environnement;
 
 public abstract class SMA {
-	protected final List<Agent> agentList = new ArrayList<>();
+//	protected final List<Agent> agentList = new ArrayList<>();
+	protected final Agent[] agentList = new Agent[ConstantParams.getNumberOfParticles()];
 	
 	abstract public void run();
 
@@ -27,7 +25,8 @@ public abstract class SMA {
 					pasY = ConstantParams.getRandom().nextInt(3) - 1;
 				}
 			} while (!env.isEmptyCellule(posX, posY));
-			agentList.add(new Agent(i, posX, posY, pasX, pasY, env));
+//			agentList.add(new Agent(i, posX, posY, pasX, pasY, env));
+			agentList[i] = new Agent(i, posX, posY, pasX, pasY, env);
 		}
 		Logger.log(agentList);
 	}

@@ -1,15 +1,20 @@
 package tp1.sma;
 
-import tp1.model.Agent;
-
 public class SMASequential extends SMA {
 
+	private int cursor = 0; 
 	
 	@Override
 	public void run() {
-		Agent agent = agentList.remove(0);
-		agent.decide();
-		agentList.add(agent);
+		agentList[cursor].decide();
+		if(++cursor >= agentList.length) {
+			cursor = 0;
+		};
 	}
+//	public void run() {
+//		Agent agent = agentList.remove(0);
+//		agent.decide();
+//		agentList.add(agent);
+//	}
 
 }

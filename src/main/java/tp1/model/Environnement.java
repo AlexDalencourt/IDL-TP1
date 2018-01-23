@@ -43,7 +43,7 @@ public class Environnement extends Observable {
 	}
 
 	public boolean checkOutOfBorders(int x, int y) {
-		return (x < 0 || y < 0 || x >= ConstantParams.getGridSizeX() || y >= ConstantParams.getGridSizeY()) && !torus;
+		return !torus && (x < 0 || y < 0 || x >= ConstantParams.getGridSizeX() || y >= ConstantParams.getGridSizeY());
 	}
 	
 	public void applyTransition(Agent agent) {
