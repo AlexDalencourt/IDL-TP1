@@ -63,7 +63,7 @@ public class ConstantParams {
 	}
 
 	public static boolean getTorus() {
-		return Boolean.getBoolean(props.getProperty("torus"));
+		return Boolean.valueOf(props.getProperty("torus"));
 	}
 
 	public static SMA getSMA() {
