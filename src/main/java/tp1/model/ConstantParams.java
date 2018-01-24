@@ -27,8 +27,8 @@ public class ConstantParams {
 	static {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Path to properties file");
-//		String path = scan.nextLine();
-		String path = "src/main/resources/param.properties";
+		String path = scan.nextLine();
+//		String path = "src/main/resources/param.properties";
 		scan.close();
 		props = new Properties();
 		try {
